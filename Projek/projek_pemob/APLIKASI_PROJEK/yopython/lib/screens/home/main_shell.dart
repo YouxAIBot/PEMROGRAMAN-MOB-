@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../theme/app_theme.dart';
 import 'home_screen.dart';
 import 'leaderboard_screen.dart';
+import 'profile_screen.dart';
 
 /// Tiga tab bawah: Belajar, Peringkat, Profil. Tab aktif disimpan di state.
 class MainShell extends StatefulWidget {
@@ -19,7 +20,7 @@ class _MainShellState extends State<MainShell> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: IndexedStack(index: tab, children: const [HomeScreen(), LeaderboardScreen(), _Soon('Profil')]),
+        child: IndexedStack(index: tab, children: const [HomeScreen(), LeaderboardScreen(), ProfileScreen()]),
       ),
       bottomNavigationBar: NavigationBarTheme(
         data: NavigationBarThemeData(
@@ -56,14 +57,4 @@ class _MainShellState extends State<MainShell> {
       ),
     );
   }
-}
-
-/// Sementara: tab yang halamannya belum dibuat.
-class _Soon extends StatelessWidget {
-  final String name;
-  const _Soon(this.name);
-
-  @override
-  Widget build(BuildContext context) =>
-      Center(child: Text('Halaman $name dibuat di langkah berikutnya.', style: AppText.lead));
 }
