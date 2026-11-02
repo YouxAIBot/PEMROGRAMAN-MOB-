@@ -4,6 +4,7 @@ import '../../models/models.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/common.dart';
 import 'fill_view.dart';
+import 'output_view.dart';
 import 'parsons_view.dart';
 import 'spot_bug_view.dart';
 
@@ -29,30 +30,8 @@ Widget buildQuestionView({
     ParsonsQuestion q => ParsonsView(key: key, q: q, locked: locked, onChanged: onChanged),
     FillQuestion q => FillView(key: key, q: q, locked: locked, onChanged: onChanged),
     SpotBugQuestion q => SpotBugView(key: key, q: q, locked: locked, onChanged: onChanged),
-    _ => ComingSoonView(key: key, onChanged: onChanged), // sementara
+    OutputQuestion q => OutputView(key: key, q: q, locked: locked, onChanged: onChanged),
   };
-}
-
-/// Sementara: tipe soal yang belum dibuat. Dihapus di langkah 9.
-class ComingSoonView extends StatelessWidget {
-  final ValueChanged<QAnswer> onChanged;
-  const ComingSoonView({super.key, required this.onChanged});
-
-  @override
-  Widget build(BuildContext context) => CardBox(
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const Text('Tipe soal ini dibuat di langkah berikutnya.', style: AppText.body),
-        const SizedBox(height: 12),
-        AppButton(
-          'Anggap benar (sementara)',
-          kind: BtnKind.ghost,
-          onPressed: () => onChanged(const QAnswer(ready: true, correct: true)),
-        ),
-      ],
-    ),
-  );
 }
 
 // ======================= Soal pilihan (dasar) =======================
