@@ -7,6 +7,7 @@ import '../../theme/app_theme.dart';
 import '../../widgets/code_view.dart';
 import '../../widgets/common.dart';
 import '../../widgets/stat_bar.dart';
+import '../lesson/material_screen.dart';
 
 /// 04 Home (learning path). Isinya data contoh: lesson 1-2 selesai, 3 sedang berjalan, 4 terkunci.
 class HomeScreen extends StatelessWidget {
@@ -93,7 +94,7 @@ class _PathItem extends StatelessWidget {
     final isCurrent = lesson.id == Sample.currentLessonId;
     final locked = !done && !isCurrent;
 
-    void open() => showSoon(context, 'Kartu Materi');
+    void open() => Navigator.of(context).push(MaterialPageRoute(builder: (_) => MaterialScreen(lesson: lesson)));
 
     final Widget node;
     if (done) {
