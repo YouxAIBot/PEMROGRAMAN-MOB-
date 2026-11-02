@@ -4,6 +4,7 @@ import '../../models/models.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/code_view.dart';
 import '../../widgets/common.dart';
+import 'quiz_screen.dart';
 
 /// 05 Kartu Materi. Hanya menampilkan data lesson, jadi StatelessWidget.
 class MaterialScreen extends StatelessWidget {
@@ -49,7 +50,12 @@ class MaterialScreen extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.fromLTRB(20, 12, 20, 24),
-              child: AppButton('Mulai kuis', onPressed: () => showSoon(context, 'Kuis')),
+              child: AppButton(
+                'Mulai kuis',
+                onPressed: () => Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (_) => QuizScreen.lesson(lesson: lesson)),
+                ),
+              ),
             ),
           ],
         ),
