@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../theme/app_theme.dart';
 
+
 /// Logo YoPython
 class YoMark extends StatelessWidget {
   final double size;

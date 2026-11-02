@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../theme/app_theme.dart';
 import '../../widgets/common.dart';
+import 'target_screen.dart';
+
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -53,7 +55,13 @@ class WelcomeScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              AppButton('Mulai belajar', kind: BtnKind.white, onPressed: () => showSoon(context, 'Target Harian')),
+
+              AppButton(
+                'Mulai belajar',
+                kind: BtnKind.white,
+                onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const TargetScreen())),
+              ),
+
               TextButton(
                 onPressed: () => goRegister(login: true),
                 style: TextButton.styleFrom(foregroundColor: Colors.white, minimumSize: const Size.fromHeight(48)),
