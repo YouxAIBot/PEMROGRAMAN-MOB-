@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../theme/app_theme.dart';
 import '../../widgets/common.dart';
-
+import 'register_screen.dart';
 
 /// Target harian yang bisa dipilih. Dipakai juga di Profil.
 const dailyGoals = [
@@ -74,7 +74,11 @@ class _TargetScreenState extends State<TargetScreen> {
             ),
             Padding(
               padding: const EdgeInsets.fromLTRB(20, 12, 20, 24),
-              child: AppButton('Lanjut', onPressed: () => showSoon(context, 'Daftar')),
+              child: AppButton(
+                'Lanjut',
+                onPressed: () =>
+                    Navigator.of(context).push(MaterialPageRoute(builder: (_) => RegisterScreen(dailyGoalXp: goal.xp))),
+              ),
             ),
           ],
         ),

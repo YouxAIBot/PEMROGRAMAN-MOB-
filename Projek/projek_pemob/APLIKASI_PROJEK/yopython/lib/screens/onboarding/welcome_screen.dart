@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/common.dart';
 import 'target_screen.dart';
+import 'register_screen.dart';
 
 
 class WelcomeScreen extends StatelessWidget {
@@ -10,7 +11,8 @@ class WelcomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    void goRegister({required bool login}) => showSoon(context, login ? 'Masuk' : 'Daftar');
+    void goRegister({required bool login}) =>
+        Navigator.of(context).push(MaterialPageRoute(builder: (_) => RegisterScreen(startWithLogin: login)));
 
     return Scaffold(
       backgroundColor: AppColors.ink,
