@@ -256,7 +256,7 @@ class OptionTile extends StatelessWidget {
                     child: child,
                   ),
                 ),
-                if (trailing != null) trailing!,
+                ?trailing,
                 if (showRadio) _Radio(on: state == OptState.selected),
               ]),
             ),
