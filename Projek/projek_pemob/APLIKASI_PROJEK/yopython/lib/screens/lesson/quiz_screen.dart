@@ -6,6 +6,7 @@ import '../../theme/app_theme.dart';
 import '../../widgets/common.dart';
 import 'question_views.dart';
 import 'summary_screen.dart';
+import 'no_hearts_screen.dart';
 
 /// 06-10 Alur kuis: jawab, Periksa, umpan balik, lanjut.
 /// StatefulWidget karena soal aktif, pilihan, nyawa, dan fase berubah terus.
@@ -45,8 +46,7 @@ class _QuizScreenState extends State<QuizScreen> {
 
   void _next() {
     if (!widget.practice && hearts == 0) {
-      showSoon(context, 'Nyawa Habis');
-      Navigator.of(context).pop();
+      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => const NoHeartsScreen()));
       return;
     }
     if (index + 1 < widget.questions.length) {
