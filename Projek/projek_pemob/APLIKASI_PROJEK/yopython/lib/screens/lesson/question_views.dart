@@ -5,6 +5,7 @@ import '../../theme/app_theme.dart';
 import '../../widgets/common.dart';
 import 'fill_view.dart';
 import 'parsons_view.dart';
+import 'spot_bug_view.dart';
 
 /// Jawaban yang sedang dipilih pengguna.
 class QAnswer {
@@ -27,6 +28,7 @@ Widget buildQuestionView({
   return switch (question) {
     ParsonsQuestion q => ParsonsView(key: key, q: q, locked: locked, onChanged: onChanged),
     FillQuestion q => FillView(key: key, q: q, locked: locked, onChanged: onChanged),
+    SpotBugQuestion q => SpotBugView(key: key, q: q, locked: locked, onChanged: onChanged),
     _ => ComingSoonView(key: key, onChanged: onChanged), // sementara
   };
 }
