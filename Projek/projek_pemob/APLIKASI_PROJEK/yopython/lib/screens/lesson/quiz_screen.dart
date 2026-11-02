@@ -5,6 +5,7 @@ import '../../models/models.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/common.dart';
 import 'question_views.dart';
+import 'summary_screen.dart';
 
 /// 06-10 Alur kuis: jawab, Periksa, umpan balik, lanjut.
 /// StatefulWidget karena soal aktif, pilihan, nyawa, dan fase berubah terus.
@@ -57,8 +58,19 @@ class _QuizScreenState extends State<QuizScreen> {
       return;
     }
     watch.stop();
-    showSoon(context, 'Ringkasan');
-    Navigator.of(context).pop();
+    final correct = results.where((r) => r.correct).length;
+    final gained = correct * (widget.practice ? xpPerPractice : xpPerCorrect);
+    Navigator.of(context).pushReplacement(
+      MaterialPageRoute(
+        builder: (_) => SummaryScreen(
+          lesson: widget.lesson,
+          results: List.of(results),
+          xpGained: gained,
+          duration: watch.elapsed,
+          practice: widget.practice,
+        ),
+      ),
+    );
   }
 
   Future<void> _confirmExit() async {
