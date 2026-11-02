@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/common.dart';
 import 'target_screen.dart';
+import '../home/main_shell.dart';
 
 /// 03 Registrasi: pilihan Daftar | Masuk dan form. StatefulWidget karena ada input.
 ///
@@ -37,7 +38,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   void _submit() {
     if (!_form.currentState!.validate()) return;
-    showSoon(context, 'Home');
+    Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (_) => const MainShell()), (_) => false);
   }
 
   void _forgot() {
